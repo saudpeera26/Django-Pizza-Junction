@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}My Orders Page{% endblock %}
+{% block body %}
+
+<br><br><br><br><br><br><br><br>
+<h1 style="text-align: center;">My Orders...</h1>
+<div class="container">
+    <div class="row">
+        <table  border="2" cellpading="10" cellspacing="10" >
+            
+            <div>
+                <div>
+            <tr>
+                <th>Sr.No</th>
+                <th>Product id</th>
+                <th>Pizza Name</th>
+                <th>Order ID</th>
+                <th>QTY</th>
+                <th>image</th>
+            </tr>
+        </div>
+            
+            {% for x in allorders %}
+            <div>
+                <tr>
+                <th>{{forloop.counter}}</th>
+                <th>{{x.sno.sno}}</th>
+                <th>{{x.sno.pizza_name}}</th>
+                <th>{{x.order_id}}</th>
+                
+                <th>{{x.qty}}</th>
+                <th><img src="{{x.sno.image.url}}" alt=""></th>
+                </tr>
+            </div>
+            </div>
+            {% endfor %}
+            
+        </table>
+    </div>
+    </div>
+
+    {% endblock %}

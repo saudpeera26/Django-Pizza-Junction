@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Register Page{% endblock %}
+{% block body %}
+<section id="signup">
+    <h1>Register...</h1>
+    <div class="form__box">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="input1" name="uname" placeholder="name@example.com" required>
+                
+            </div>
+            <div>
+                <label for="pass1">Create Password:</label>
+                <input type="password" id="input2" name="upass" placeholder="create password" required>
+            </div>
+            <div>
+                <label for="pass2">Confirm Password:</label>
+                <input type="password" id="input3" name="ucpass" placeholder="Enter confirm password" required>
+                
+            </div>
+            <div class="btn-submit-form">
+               <button type="submit">Submit</button>
+            </div>
+            <div>
+                <p>Already have an account! <a href="{% url 'userlogin' %}">Login</a></p>
+            </div>
+        </form>
+    </div>
+    
+    </section>
+
+    <br><br><br><br><br><br>
+{% endblock %}
+
+    
+

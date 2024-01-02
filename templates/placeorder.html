@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Place order Page{% endblock %}
+{% block body %}
+
+
+<section id="section__four" class="menu">
+    <h1>Place your order</h1>
+    <div class="pizza__container__box">
+        {% for x in cart_items %}
+        <form action="" method="POST" class="card">
+            {% csrf_token %}
+            <div class="image">
+                <img src="{{x.sno.image.url}}" alt="{{x.sno.pizza_name}}">
+            </div>
+            <div class="pizza__content">
+                <input type="text" id="sno" name="sno" value="{{x.sno}}" style="display:none;">
+                <center>
+                <h2>{{x.sno.pizza_name}}</h2>
+            </center>
+                <p style="text-align:left;">{{x.sno.pizza_desc}}</p>
+                <div class="price__order__btn__box">
+                    <h4>Rs.{{x.sno.pizza_price}}</h4>
+                    <div class="price__order__btn__box">
+                    <p>
+                        <strong>Qty:</strong>
+                        <br>
+                        <a href="/updateqty/0/{{x.sno.sno}}"><button type="button">-</button></a>
+                        <br>
+                        <input type="number" value="{{x.qty}}">
+                        <br>
+                        <a href="/updateqty/1/{{x.sno.sno}}"><button type="button">+</button></a>
+                        <br>
+                    </p>
+                </div>
+                    <a href="/remove_from_cart/{{x.sno.sno}}"><button type="button">Remove</button></a>
+                    <br>
+                </div>
+                <div>
+                   
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+        <div>
+            <h2>Total Amount section...</h2>
+            <br>
+            <table border="2" cellpadding="10">
+                <tr>
+                    <th>Total Items</th>
+                    <th>Total Amount</th>
+                </tr>
+                <tr>
+                    <th>{{items}}</th>
+                    <th>rs.{{total}}</th>
+                </tr>
+            </table>
+            <a href="{% url 'makepayment' %}"><button style="height: 50px;width: 100px;background-color: 4D4D4D;" type="button">Place Order</button></a>
+        </div>
+
+        
+{% endblock %}
+
+
+
+
+
+
+
+
+
